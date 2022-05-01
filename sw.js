@@ -25,15 +25,17 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.open("assets").then((cache) => {
       cache.match(event.request).then((cachedResponse) => {
-        console.log(cachedResponse);
-        //this approach is cache first!
-        if (cachedResponse) {
-          //it's cached before
-          return cachedResponse;
-        } else {
-          // it's not chached
-          return fetch(event.request);
-        }
+        const fetchPromise = fetch(
+          event.request(
+            then((res) => {
+              caches.open("assets").then((cache) => {
+                cache.put(event.request, res.clone());
+                return res;
+              });
+            })
+          )
+        );
+        return cachedResponse || fetchPromise;
       });
     })
   );
