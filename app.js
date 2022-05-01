@@ -1,4 +1,4 @@
-var notes = [];
+let notes = [];
 
 document.addEventListener("DOMContentLoaded", (event) => {
   if (localStorage.getItem("notes")) {
