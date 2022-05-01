@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,viewport-fit=cover" />
+    <title>Save your notes!</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js"></script>
+    <script src="sw-register.js"></script>
+    <!-- <script src="sw-register.js"></script> -->
+    <!-- you can add the theme-color meta tag here instead of manifest file 
+    if you declare it here you can add a media attribute to specify theme color based on something!
+    but you can't do it with theme_color property in manifest 
+      it is also usefull to change the status bar color when user didn't installed app yet
+  -->
+    <meta name="theme-color" content="#125b50" media="dark" />
+    <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" />
+  </head>
+
+  <body>
+    <h1>Simple PWA!</h1>
+    <form>
+      <textarea placeholder="Your Note..."></textarea>
+      <ul id="toolbar">
+        <li>
+          <button type="submit">Save</button>
+        </li>
+      </ul>
+    </form>
+    <ul id="toolbar">
+      <li id="itemInstall">
+        <button id="btnInstall">
+          <span class="icon">download</span>
+          Install
+        </button>
+      </li>
+    </ul>
+    <ul id="notes"></ul>
+  </body>
+</html>
